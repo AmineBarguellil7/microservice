@@ -2,6 +2,7 @@ package com.example.microservice.controller;
 
 
 import com.example.microservice.entity.Candidat;
+import com.example.microservice.repos.CandidatRepository;
 import com.example.microservice.service.CandidatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,9 +10,13 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class CandidatRestAPI {
 
+    @Autowired
+    CandidatRepository candidatRepository;
     @Autowired
     private CandidatService candidatService;
     private String title="Hello , from microservice";
@@ -21,6 +26,11 @@ public class CandidatRestAPI {
     public String sayHello() {
         System.out.println(title);
         return title;
+    }
+
+    @GetMapping("/candidats")
+    public List<Candidat> GetCandidats() {
+        return candidatRepository.findAll();
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_XML_VALUE)
