@@ -17,4 +17,13 @@ public class Candidat {
     private String nom,prenom,email;
 
 
+    @Override
+    public String toString() {
+        return "Candidat{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }

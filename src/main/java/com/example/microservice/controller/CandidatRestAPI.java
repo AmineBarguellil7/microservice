@@ -33,7 +33,7 @@ public class CandidatRestAPI {
         return candidatRepository.findAll();
     }
 
-    @PostMapping(consumes = MediaType.APPLICATION_XML_VALUE)
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Candidat> createCandidat(@RequestBody Candidat candidat) {
         return new ResponseEntity<>(candidatService.addCandidat(candidat), HttpStatus.OK);
